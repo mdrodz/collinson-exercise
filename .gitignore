@@ -1,0 +1,33 @@
+# compiled output
+/dist
+/build
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDE - VSCode
+/.vscode
+
+# dotenv environment variable files
+.env
+.env.local
+.env.*.local
+
+# Yarn Zero-installs
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
