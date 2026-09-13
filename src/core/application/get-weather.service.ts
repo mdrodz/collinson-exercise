@@ -1,4 +1,6 @@
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
+import type { Cache } from 'cache-manager';
 import type Weather from '../domain/wheather/weather.js';
 import type { WeatherReport } from '../domain/wheather/weather.js';
 import { Activity, ActivityRatingLabel, type ActivityRating, type DailyActivityRating } from '../domain/wheather/activity.js';
@@ -13,6 +15,7 @@ import type { GetWeatherPort } from '../ports/inbound/get-weather.port.js';
 export class GetWeatherService implements GetWeatherPort
 {
     constructor(
+        @Inject(CACHE_MANAGER) private readonly cache: Cache,
         @Inject(GEOCODING_PORT) private readonly geocoding: GeocodingPort,
         @Inject(WEATHER_PORT) private readonly weather: WeatherPort
     )
@@ -21,6 +24,13 @@ export class GetWeatherService implements GetWeatherPort
 
     async execute(city: string, country: string): Promise<WeatherForecast>
     {
+        const cacheKey = this.cacheKey(city, country);
+        const cachedForecast = await this.cache.get<WeatherForecast>(cacheKey);
+
+        if (cachedForecast) {
+            return cachedForecast;
+        }
+
         const coordinate = await this.geocoding.fetchCoordinates(city, country);
 
         const weather = await this.weather.fetchWeather(
@@ -28,7 +38,16 @@ export class GetWeatherService implements GetWeatherPort
             coordinate.getLongitude()
         );
 
-        return new WeatherForecast(this.rankDays(weather));
+        const forecast = new WeatherForecast(this.rankDays(weather));
+
+        await this.cache.set(cacheKey, forecast);
+
+        return forecast;
+    }
+
+    private cacheKey(city: string, country: string): string
+    {
+        return `weather:${city.trim().toLowerCase()}:${country.trim().toLowerCase()}`;
     }
 
     private rankDays(weather: Weather): DailyActivityRating[]
