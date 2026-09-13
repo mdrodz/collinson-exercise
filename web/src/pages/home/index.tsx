@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { LoaderCircle, MapPin, Search, Sun } from 'lucide-react';
+import { Weather } from '../../types/Weather';
 
 const WEATHER_QUERY = `
   query Weather($city: String!, $country: String!) {
@@ -9,10 +10,8 @@ const WEATHER_QUERY = `
   }
 `;
 
-type Weather = { days: Array<{ date: string; activities: Array<{ activity: string; score: number; label: string }> }> };
-
-const initialLocation = { city: 'Lisbon', country: 'Portugal' };
-const dateFormatter = new Intl.DateTimeFormat('en', { weekday: 'long', month: 'short', day: 'numeric' });
+const initialLocation = { city: 'São Paulo', country: 'Brazil' };
+const dateFormatter = new Intl.DateTimeFormat();
 
 function formatForecastDate(value: string): string {
   const dateValue = /^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T12:00:00` : value;
@@ -21,9 +20,9 @@ function formatForecastDate(value: string): string {
   return Number.isNaN(date.getTime()) ? value : dateFormatter.format(date);
 }
 
-function App() {
+export default function Home() {
   const [location, setLocation] = useState(initialLocation);
-  const [weather, setWeather] = useState<Weather | null>(null);
+  const [weather, setWeather] = useState<Weather>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -85,5 +84,3 @@ function App() {
     </main>
   );
 }
-
-export default App;
