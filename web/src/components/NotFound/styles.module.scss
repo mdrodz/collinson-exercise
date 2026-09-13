@@ -6,54 +6,6 @@
 	font-family: 'DM Sans', sans-serif;
 }
 
-.topbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	max-width: 1120px;
-	height: 88px;
-	margin: auto;
-	padding: 0 32px;
-}
-
-.brand {
-	display: inline-flex;
-	align-items: center;
-	gap: 10px;
-	color: inherit;
-	font-size: 19px;
-	font-weight: 700;
-	letter-spacing: -.4px;
-	text-decoration: none;
-}
-
-.brand-mark {
-	display: grid;
-	place-items: center;
-	width: 32px;
-	height: 32px;
-	color: #102929;
-	background: #d4774f;
-	border-radius: 50%;
-}
-
-.status {
-	color: #657a73;
-	font-size: 12px;
-	letter-spacing: 1.1px;
-	text-transform: uppercase;
-}
-
-.status-dot {
-	display: inline-block;
-	width: 7px;
-	height: 7px;
-	margin-right: 8px;
-	background: #d4774f;
-	border-radius: 50%;
-	box-shadow: 0 0 0 4px #f1ded5;
-}
-
 .content {
 	max-width: 1120px;
 	margin: auto;
@@ -112,15 +64,6 @@ h1 em {
 }
 
 @media (max-width: 760px) {
-	.topbar {
-		height: 72px;
-		padding: 0 20px;
-	}
-
-	.status {
-		font-size: 10px;
-	}
-
 	.content {
 		padding: 100px 20px 80px;
 	}

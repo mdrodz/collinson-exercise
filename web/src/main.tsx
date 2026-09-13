@@ -1,7 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Routes from './routes';
-import { ErrorBoundary } from './components/ErrorElement';
 import { QueryProvider } from './contexts/QueryProvider';
 
 import './styles.css';

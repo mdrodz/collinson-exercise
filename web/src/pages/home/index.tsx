@@ -1,6 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { LoaderCircle, MapPin, Search, Sun } from 'lucide-react';
+import Header from '../../components/Header';
 import { Weather } from '../../types/Weather';
+import { Link } from 'react-router';
 
 const WEATHER_QUERY = `
   query Weather($city: String!, $country: String!) {
@@ -56,10 +58,7 @@ export default function Home() {
 
   return (
     <main className="app-shell">
-      <header className="topbar">
-        <a className="brand" href="/" aria-label="Daybound home"><span className="brand-mark"><Sun size={18} /></span>daybound</a>
-        <span className="status"><span className="status-dot" /> live forecast</span>
-      </header>
+      <Header status="live forecast" />
 
       <section className="hero">
         <div className="hero-copy">
@@ -80,7 +79,7 @@ export default function Home() {
         {loading && !weather ? <div className="loading"><LoaderCircle className="spinner" size={28} /> Reading the atmosphere...</div> : null}
         {weather ? <div className="daily-list">{weather.days.map((day) => <article className="daily-card" key={day.date}><div><span className="section-label">{formatForecastDate(day.date)}</span><Sun size={20} /></div><ol>{day.activities.map((rating) => <li key={rating.activity}><span>{rating.activity.replaceAll('_', ' ')}</span><strong>{rating.score}</strong><small>{rating.label}</small></li>)}</ol></article>)}</div> : null}
       </section>
-      <footer>Forecast data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a> · Built for the days ahead</footer>
+      <footer>Forecast data by <Link to="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</Link> · Built for the days ahead</footer>
     </main>
   );
 }
