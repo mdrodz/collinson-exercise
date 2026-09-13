@@ -6,7 +6,12 @@ COPY ./ ./
 
 RUN rm -rf /web/ && \
     corepack enable && \
-    yarn install
+    yarn install && \
+    # Fixing permissions on all files
+    chown -R node:node ./ && \
+    chmod -R 755 ./
+
+USER node
 
 FROM base AS development
 

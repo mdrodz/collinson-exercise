@@ -10,7 +10,7 @@ export class OpenMeteoGeocodingAdapter implements GeocodingPort
     async fetchCoordinates(city: string, country: string): Promise<Coordinate>
     {
         const query = new URLSearchParams({
-            name: `${city},${country}`,
+            name: `${city.trim()},${country.trim()}`,
             language: 'en',
             format: 'json',
             count: '1'

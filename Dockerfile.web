@@ -6,7 +6,12 @@ COPY ./web ./
 COPY ./docker-compose ./docker-compose
 
 RUN corepack enable && \
-    yarn install
+    yarn install && \
+    # Fixing permissions on all files
+    chown -R node:node ./ && \
+    chmod -R 755 ./
+
+USER node
 
 FROM base AS development
 
@@ -14,4 +19,6 @@ CMD ["yarn", "run", "dev", "--host", "0.0.0.0"]
 
 FROM base AS production
 
-CMD ["yarn", "run", "build"]
+RUN yarn run build
+
+CMD ["yarn", "run", "preview", "--host", "0.0.0.0"]

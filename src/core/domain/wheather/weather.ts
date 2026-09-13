@@ -41,56 +41,21 @@ export default class Weather
         this.time = props.time.map(time => new Date(time));
     }
 
-    getTime(): Date[]
-    {
-        return this.time;
-    }
-
-    getTemperature(): number[]
-    {
-        return this.temperature;
-    }
-
-    getPrecipitationProbability(): number[]
-    {
-        return this.precipitationProbability;
-    }
-
-    getSnowfall(): number[]
-    {
-        return this.snowfall;
-    }
-
-    getSnowDepth(): number[]
-    {
-        return this.snowDepth;
-    }
-
-    getWindSpeed(): number[]
-    {
-        return this.windSpeed;
-    }
-
-    getVisibility(): number[]
-    {
-        return this.visibility;
-    }
-
     getWeatherReportsByDate(): [string, WeatherReport[]][]
     {
         const days = new Map<string, WeatherReport[]>();
 
-        this.getTime().forEach((time, index) => {
+        this.time.forEach((time, index) => {
             const key = new Intl.DateTimeFormat().format(time);
             const value = days.get(key) ?? [];
 
             const weatherReport: WeatherReport = {
-                temperature: this.getTemperature()[index],
-                precipitation: this.getPrecipitationProbability()[index],
-                wind: this.getWindSpeed()[index],
-                visibility: this.getVisibility()[index],
-                snowfall: this.getSnowfall()[index],
-                snowDepth: this.getSnowDepth()[index],
+                temperature: this.temperature[index],
+                precipitation: this.precipitationProbability[index],
+                wind: this.windSpeed[index],
+                visibility: this.visibility[index],
+                snowfall: this.snowfall[index],
+                snowDepth: this.snowDepth[index],
                 apparentTemperature: this.apparentTemperature[index],
                 humidity: this.humidity[index],
                 rain: this.rain[index],
