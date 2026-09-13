@@ -5,6 +5,7 @@ import { AppModule } from './app.module.js';
 async function bootstrap(): Promise<void>
 {
     const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
+    app.enableCors({ origin: true });
 
     await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }

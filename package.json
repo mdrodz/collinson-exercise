@@ -14,6 +14,8 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "web:dev": "yarn --cwd web dev",
+    "web:build": "yarn --cwd web build",
     "lint": "oxlint src/ test/",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -28,14 +30,10 @@
     "@nestjs/mercurius": "^14.0.0",
     "@nestjs/platform-express": "^12.0.1",
     "@nestjs/platform-fastify": "^12.0.1",
-    "@nestjs/typeorm": "^12.0.1",
-    "dotenv": "^17.4.2",
-    "graphql": "^17.0.2",
+    "graphql": "^16.11.0",
     "mercurius": "^16.10.0",
-    "mysql2": "^3.24.4",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2",
-    "typeorm": "^1.1.1"
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^12.0.0",
