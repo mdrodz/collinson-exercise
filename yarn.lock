@@ -1967,7 +1967,7 @@ __metadata:
     "@types/node": "npm:^24.13.4"
     "@types/supertest": "npm:^7.2.1"
     "@vitest/coverage-v8": "npm:^4.1.11"
-    graphql: "npm:^16.11.0"
+    graphql: "npm:^16.14.2"
     mercurius: "npm:^16.10.0"
     oxlint: "npm:^1.82.0"
     prettier: "npm:^3.9.6"
@@ -2826,7 +2826,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16.11.0":
+"graphql@npm:^16.14.2":
   version: 16.14.2
   resolution: "graphql@npm:16.14.2"
   checksum: 10/cd9a2581508f82621112a4dc625714e81ce725ab0a62502d97c14f61fee180e85276ac64bf9094f4fbf237737832ad4bb970aa26088f9dffece56f8919a49a29

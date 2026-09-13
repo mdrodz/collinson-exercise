@@ -4,7 +4,8 @@ WORKDIR /usr/src/daybound
 
 COPY ./ ./
 
-RUN corepack enable && \
+RUN rm -rf /web/ && \
+    corepack enable && \
     yarn install
 
 FROM base AS development

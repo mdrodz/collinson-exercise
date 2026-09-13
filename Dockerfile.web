@@ -1,0 +1,17 @@
+FROM node:24-alpine AS base
+
+WORKDIR /usr/src/web
+
+COPY ./web ./
+COPY ./docker-compose ./docker-compose
+
+RUN corepack enable && \
+    yarn install
+
+FROM base AS development
+
+CMD ["yarn", "run", "dev", "--host", "0.0.0.0"]
+
+FROM base AS production
+
+CMD ["yarn", "run", "build"]

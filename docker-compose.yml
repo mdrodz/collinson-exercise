@@ -1,10 +1,11 @@
 services:
   app:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.api
       context: ./
       target: development
     entrypoint: ./docker-compose/development-entrypoint.sh
+    command: ["yarn", "run", "start:dev"]
     container_name: daybound-app
     restart: unless-stopped
     extra_hosts:
@@ -13,3 +14,30 @@ services:
       - ./:/usr/src/daybound
     ports:
       - 3000:3000
+
+  web:
+    build:
+      dockerfile: Dockerfile.web
+      context: ./
+      target: development
+    entrypoint: ./docker-compose/development-entrypoint.sh
+    command: ["yarn", "run", "dev", "--host", "0.0.0.0"]
+    container_name: daybound-web
+    restart: unless-stopped
+    volumes:
+      - ./web:/usr/src/web
+      - ./docker-compose:/usr/src/web/docker-compose
+    ports:
+      - 5173:5173
+
+  redis:
+    image: redis:8-alpine
+    container_name: daybound-redis
+    restart: unless-stopped
+    environment:
+      - REDIS_ARGS="--requirepass password --appendonly yes"
+    volumes:
+      - daybound-redis:/data
+
+volumes:
+  daybound-redis:
