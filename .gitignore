@@ -1,3 +1,5 @@
+/node_modules/
+
 # compiled output
 /dist
 /build
@@ -14,11 +16,7 @@ yarn-error.log*
 # Tests
 /coverage
 /.nyc_output
-/web/dist
-/web/node_modules
-/web/.pnp.*
-/web/.yarn
-/web/tsconfig.tsbuildinfo
+tsconfig.*tsbuildinfo
 
 # IDE - VSCode
 /.vscode
