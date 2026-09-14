@@ -1,8 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Routes from './routes';
-import { QueryProvider } from './contexts/QueryProvider';
-import { HeaderStatusProvider } from './contexts/HeaderStatusProvider';
+import { QueryProvider } from './contexts/query-provider';
+import { HeaderStatusProvider } from './contexts/header-status-provider';
 
 import './styles.css';
 

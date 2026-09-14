@@ -1,6 +1,6 @@
 import { type SubmitEvent, useCallback, useEffect, useState } from 'react';
 import { LoaderCircle, MapPin, Search, Sun } from 'lucide-react';
-import { useHeaderStatus } from '../../contexts/HeaderStatusProvider';
+import { useHeaderStatus } from '../../contexts/header-status-provider';
 import { Link } from 'react-router';
 import loadWeather from '../../api/weather/load-weather';
 import { useQuery } from '@tanstack/react-query';
@@ -9,7 +9,8 @@ import useTrimmedString from '../../hooks/use-trimmed-string';
 const initialLocation = { city: 'São Paulo', country: 'Brazil' };
 const dateFormatter = new Intl.DateTimeFormat();
 
-function formatForecastDate(value: string): string {
+function formatForecastDate(value: string): string
+{
     const dateValue = /^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T12:00:00` : value;
     const date = new Date(dateValue);
 

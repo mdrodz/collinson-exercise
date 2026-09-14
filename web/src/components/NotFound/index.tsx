@@ -1,7 +1,7 @@
 import { ArrowLeft } from 'lucide-react';
 import styles from './styles.module.scss';
 import { Link } from 'react-router';
-import { useHeaderStatus } from '../../contexts/HeaderStatusProvider';
+import { useHeaderStatus } from '../../contexts/header-status-provider';
 import { useEffect, useId } from 'react';
 
 export default function NotFound()

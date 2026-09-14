@@ -1,6 +1,6 @@
 import { Outlet, ScrollRestoration } from 'react-router';
-import Header from '../components/Header';
-import { useHeaderStatus } from '../contexts/HeaderStatusProvider';
+import Header from '../../components/Header';
+import { useHeaderStatus } from '../../contexts/header-status-provider';
 
 export function Root()
 {

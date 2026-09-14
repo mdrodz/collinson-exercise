@@ -1,0 +1,147 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header > renders the alert status tone when requested 1`] = `
+<DocumentFragment>
+  <header
+    class="_topbar_b4135b"
+  >
+    <a
+      aria-label="Daybound Application"
+      class="_brand_b4135b"
+      data-discover="true"
+      href="/"
+    >
+      <span
+        class="_brandMark_b4135b"
+      >
+        <svg
+          class="lucide lucide-sun"
+          fill="none"
+          height="18"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+          />
+          <path
+            d="M12 2v2"
+          />
+          <path
+            d="M12 20v2"
+          />
+          <path
+            d="m4.93 4.93 1.41 1.41"
+          />
+          <path
+            d="m17.66 17.66 1.41 1.41"
+          />
+          <path
+            d="M2 12h2"
+          />
+          <path
+            d="M20 12h2"
+          />
+          <path
+            d="m6.34 17.66-1.41 1.41"
+          />
+          <path
+            d="m19.07 4.93-1.41 1.41"
+          />
+        </svg>
+      </span>
+      <span>
+        daybound
+      </span>
+    </a>
+    <span
+      class="_status_b4135b"
+    >
+      <span
+        class="_statusDot_b4135b _alert_b4135b"
+      />
+      page not found
+    </span>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`Header > renders the brand and live status 1`] = `
+<DocumentFragment>
+  <header
+    class="_topbar_b4135b"
+  >
+    <a
+      aria-label="Daybound Application"
+      class="_brand_b4135b"
+      data-discover="true"
+      href="/"
+    >
+      <span
+        class="_brandMark_b4135b"
+      >
+        <svg
+          class="lucide lucide-sun"
+          fill="none"
+          height="18"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+          />
+          <path
+            d="M12 2v2"
+          />
+          <path
+            d="M12 20v2"
+          />
+          <path
+            d="m4.93 4.93 1.41 1.41"
+          />
+          <path
+            d="m17.66 17.66 1.41 1.41"
+          />
+          <path
+            d="M2 12h2"
+          />
+          <path
+            d="M20 12h2"
+          />
+          <path
+            d="m6.34 17.66-1.41 1.41"
+          />
+          <path
+            d="m19.07 4.93-1.41 1.41"
+          />
+        </svg>
+      </span>
+      <span>
+        daybound
+      </span>
+    </a>
+    <span
+      class="_status_b4135b"
+    >
+      <span
+        class="_statusDot_b4135b _live_b4135b"
+      />
+      live forecast
+    </span>
+  </header>
+</DocumentFragment>
+`;

@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ErrorElement > renders the recovery message and updates the header status 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="_r_0_"
+    class="_content_c9bf70"
+  >
+    <p
+      class="_eyebrow_c9bf70"
+    >
+      A brief change in the atmosphere
+    </p>
+    <h1
+      id="_r_0_"
+    >
+      The forecast needs a
+      <br />
+      <em>
+        moment to settle.
+      </em>
+    </h1>
+    <p
+      class="_message_c9bf70"
+    >
+      Something unexpected happened while loading the page. Please return to the forecast and try again.
+    </p>
+    <a
+      class="_homeLink_c9bf70"
+      data-discover="true"
+      href="/"
+    >
+      <svg
+        class="lucide lucide-arrow-left"
+        fill="none"
+        height="17"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="17"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m12 19-7-7 7-7"
+        />
+        <path
+          d="M19 12H5"
+        />
+      </svg>
+       Back to the forecast
+    </a>
+  </section>
+  <output>
+    system pause alert
+  </output>
+</DocumentFragment>
+`;
