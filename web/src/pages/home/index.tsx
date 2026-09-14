@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import loadWeather from '../../api/weather/load-weather';
 import { useQuery } from '@tanstack/react-query';
 import useTrimmedString from '../../hooks/use-trimmed-string';
+import styles from './styles.module.scss';
 
 const initialLocation = { city: 'São Paulo', country: 'Brazil' };
 const dateFormatter = new Intl.DateTimeFormat();
@@ -51,27 +52,27 @@ export default function Home()
     }, [city, country, submittedLocation, setSubmittedLocation]);
 
     return (
-        <>
-            <section className="hero">
-                <div className="hero-copy">
-                    <p className="eyebrow">Your day, in the open air</p>
+        <div className={styles.appShell}>
+            <section className={styles.hero}>
+                <div className={styles.heroCopy}>
+                    <p className={styles.eyebrow}>Your day, in the open air</p>
                     <h1>Weather with a little more <em>clarity.</em></h1>
-                    <p className="lede">A calm read on what the sky is doing now, and what it has planned next.</p>
+                    <p className={styles.lede}>A calm read on what the sky is doing now, and what it has planned next.</p>
                 </div>
-                <form className="search-form" onSubmit={handleSubmit}>
-                    <label><MapPin size={16} /><span className="sr-only">City</span><input value={city} onChange={(evt) => setCity(evt.currentTarget.value)} placeholder="City" /></label>
-                    <label><span className="sr-only">Country</span><input value={country} onChange={(evt) => setCountry(evt.currentTarget.value)} placeholder="Country" /></label>
+                <form className={styles.searchForm} onSubmit={handleSubmit}>
+                    <label><MapPin size={16} /><span className={styles.srOnly}>City</span><input value={city} onChange={(evt) => setCity(evt.currentTarget.value)} placeholder="City" /></label>
+                    <label><span className={styles.srOnly}>Country</span><input value={country} onChange={(evt) => setCountry(evt.currentTarget.value)} placeholder="Country" /></label>
                     <button type="submit" aria-label="Search forecast" disabled={isFetching}><Search size={18} /></button>
                 </form>
             </section>
 
-            {error ? <div className="error-banner">{error.message}</div> : null}
-            <section className="forecast" aria-live="polite">
-                <div className="forecast-heading"><div><p className="eyebrow">Next seven days in</p><h2>{submittedLocation.city}, {submittedLocation.country}</h2></div><span className="date-label">{weather ? `${weather.days.length} days ranked` : 'Loading forecast'}</span></div>
-                {isLoading ? <div className="loading"><LoaderCircle className="spinner" size={28} /> Reading the atmosphere...</div> : null}
-                {weather ? <div className="daily-list">{weather.days.map((day) => <article className="daily-card" key={day.date}><div><span className="section-label">{formatForecastDate(day.date)}</span><Sun size={20} /></div><ol>{day.activities.map((rating) => <li key={rating.activity}><span>{rating.activity.replaceAll('_', ' ')}</span><strong>{rating.score}</strong><small>{rating.label}</small></li>)}</ol></article>)}</div> : null}
+            {error ? <div className={styles.errorBanner}>{error.message}</div> : null}
+            <section className={styles.forecast} aria-live="polite">
+                <div className={styles.forecastHeading}><div><p className={styles.eyebrow}>Next seven days in</p><h2>{submittedLocation.city}, {submittedLocation.country}</h2></div><span className={styles.dateLabel}>{weather ? `${weather.days.length} days ranked` : 'Loading forecast'}</span></div>
+                {isLoading ? <div className={styles.loading}><LoaderCircle className={styles.spinner} size={28} /> Reading the atmosphere...</div> : null}
+                {weather ? <div className={styles.dailyList}>{weather.days.map((day) => <article className={styles.dailyCard} key={day.date}><div><span className={styles.sectionLabel}>{formatForecastDate(day.date)}</span><Sun size={20} /></div><ol>{day.activities.map((rating) => <li key={rating.activity}><span>{rating.activity.replaceAll('_', ' ')}</span><strong>{rating.score}</strong><small>{rating.label}</small></li>)}</ol></article>)}</div> : null}
             </section>
-            <footer>Forecast data by <Link to="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</Link> · Built for the days ahead</footer>
-        </>
+            <footer className={styles.footer}>Forecast data by <Link to="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</Link> · Built for the days ahead</footer>
+        </div>
     );
 }
