@@ -1,20 +1,24 @@
 import { ArrowLeft } from 'lucide-react';
-import Header from '../Header';
 import styles from './styles.module.scss';
 import { Link } from 'react-router';
+import { useHeaderStatus } from '../../contexts/HeaderStatusProvider';
+import { useEffect, useId } from 'react';
 
 export default function NotFound()
 {
-    return (
-        <main className={styles.notFound}>
-            <Header status="page not found" statusTone="alert" />
+    const ariaLabel = useId();
+    const { setStatusAndTone } = useHeaderStatus();
+    
+    useEffect(() => {
+        setStatusAndTone('page not found', 'alert');
+    }, [setStatusAndTone]);
 
-            <section className={styles.content} aria-labelledby="not-found-title">
-                <p className={styles.eyebrow}>A small change of direction</p>
-                <h1 id="not-found-title">This page wandered<br /><em>off the map.</em></h1>
-                <p className={styles.message}>The forecast is still here. The page you were looking for is not.</p>
-                <Link className={styles.homeLink} to="/"><ArrowLeft size={17} /> Back to the forecast</Link>
-            </section>
-        </main>
+    return (
+        <section className={styles.content} aria-labelledby={ariaLabel}>
+            <p className={styles.eyebrow}>A small change of direction</p>
+            <h1 id={ariaLabel}>This page wandered<br /><em>off the map.</em></h1>
+            <p className={styles.message}>The forecast is still here. The page you were looking for is not.</p>
+            <Link className={styles.homeLink} to="/"><ArrowLeft size={17} /> Back to the forecast</Link>
+        </section>
     );
 }
